@@ -8,16 +8,12 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 930px;
-    height: 920px;
     text-align: center;
     transform: translate(-50%, -50%);
     background-color: #570f0f;
 }
 .main_slider{
     margin: 0 auto;
-    max-width: 800px;
-    height: 920px
 }
 
 /* Стили для слайдера изображений */
@@ -107,11 +103,9 @@
 
 /* Стили для кнопок управления слайдером */
 .slider_controls {
-
     display: flex;
     justify-content: center;
     margin-top: 20px;
-    float: right;
 }
 
 .slider_button {
@@ -125,6 +119,18 @@
     background-color:white;
     transition: background-color 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
     outline: none; /* Убираем рамку при фокусировке */
+    position: relative;
+}
+.slider_button::before {
+    /* Создаем псевдоэлемент, который увеличит область нажатия */
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: -5px;
+    right: -5px;
+    bottom: -20px;
+    border: 5px solid transparent;
+    border-radius: 50%;
 }
 
 /* Стили для активной кнопки */
@@ -139,7 +145,7 @@
 }
 
 .slider_button:active {
-    transform: scale(0.95); /* Масштабирование кнопки при нажатии */
+    transform: scale(0.90); /* Масштабирование кнопки при нажатии */
 }
 .title_slider {
     font-size: 40px;
@@ -148,6 +154,43 @@
     padding-left: 10px;
     color: #fff;
     font-family: 'Mooli', sans-serif;
+}
+@media (min-width: 769px),(max-width: 960px) {
+    .container_slider{
+        width: 930px;
+        height: 920px;
+    }
+    .main_slider {
+        max-width: 800px;
+        height: 928px;
+    }
+    .slider_controls {
+        float: right;
+    }
+}
+@media (max-width: 768px) {
+    /* Ваши стили для мобильных устройств */
+    .container_slider {
+        width: 768px;
+        height: 980px;
+    }
+    .main_slider {
+        display: flex;
+        flex-direction: column;
+        max-width: 100%;
+        height: auto;
+    }
+    .img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+    .title_slider {
+        text-align: left;
+
+    }
+    .caption {
+        display: none; /* Скрыть подписи на мобильных устройствах */
+    }
 }
 
 
