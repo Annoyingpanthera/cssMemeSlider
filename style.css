@@ -1,0 +1,95 @@
+/* Стили для контейнера слайдера */
+.container_slider {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+}
+
+/* Стили для слайдера изображений */
+.img_slider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.img {
+    display: none;
+    position: relative;
+    margin: 0 auto;
+    max-width: 800px;
+    max-height: 800px;
+    animation: slide-in 0.5s ease-in-out;
+}
+.active{
+    display: block;
+}
+
+
+@keyframes slide-in {
+    from {
+        transform: translateX(100%); /* Сдвиг вправо */
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slide-out-left {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(100%); /* Сдвиг вправо */
+    }
+}
+
+@keyframes slide-in-left {
+    from {
+        transform: translateX(-100%); /* Сдвиг влево */
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slide-out-right {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%); /* Сдвиг влево */
+    }
+}
+
+@keyframes slide-in-right {
+    from {
+        transform: translateX(100%); /* Сдвиг вправо */
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+/* Стили для кнопок управления слайдером */
+.slider_controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.slider_button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+/* Стили для активной кнопки */
+.slider_button.active {
+    background-color: #555;
+}
