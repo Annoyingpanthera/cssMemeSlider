@@ -1,152 +1,94 @@
 @font-face {
     font-family: 'Mooli';
-    src: url(/cssMemeSlider/Mooli-Regular.ttf)
+    src: url(/cssMemeSlider/Mooli-Regular.ttf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #fff; /* Установите желаемый цвет фона */
+}
+
+.slider {
+    width: 1080px;
+    height: 1080px;
+    background-color: #460e0e;
 }
 
 /* Стили для контейнера слайдера */
 .container_slider {
+    width: 950px;
+    height: 950px;
+    overflow: hidden;
+    border: 10px solid #460e0e;
+    background-color: #fff; /* Установите желаемый цвет фона */
+}
+
+.middle {
     position: absolute;
     top: 50%;
     left: 50%;
-    text-align: center;
     transform: translate(-50%, -50%);
-    background-color: #570f0f;
-}
-.main_slider{
-    margin: 0 auto;
 }
 
-/* Стили для слайдера изображений */
 .img_slider {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
+    width: 400%;
+    height: 100%;
+    display: flex;
 }
 
 .img {
-    display: none;
-    position: relative;
-    margin: 0 auto;
-    margin-top: 30px;
-    max-width: 800px;
-    max-height: 800px;
-    animation: slide-in 0.5s ease-in-out;
-}
-.active{
-    display: block;
-
+    width: 25%;
+    transition: all .6s ease;
 }
 
-
-@keyframes slide-in {
-    from {
-        transform: translateX(100%); /* Сдвиг вправо */
-    }
-    to {
-        transform: translateX(0);
-    }
+.img img {
+    width: 100%;
+    height: 100%;
 }
 
-@keyframes slide-out-left {
-    from {
-        transform: translateX(0);
-    }
-    to {
-        transform: translateX(100%); /* Сдвиг вправо */
-    }
-}
-
-@keyframes slide-in-left {
-    from {
-        transform: translateX(-100%); /* Сдвиг влево */
-    }
-    to {
-        transform: translateX(0);
-    }
-}
-
-@keyframes slide-out-right {
-    from {
-        transform: translateX(0);
-    }
-    to {
-        transform: translateX(-100%); /* Сдвиг влево */
-    }
-}
-
-@keyframes slide-in-right {
-    from {
-        transform: translateX(100%); /* Сдвиг вправо */
-    }
-    to {
-        transform: translateX(0);
-    }
-}
-/* Анимация при смене текста */
-@keyframes textFadeIn {
-    from {
-      opacity: 0; /* Текст полностью прозрачен в начале анимации */
-      transform: translateY(-20px); /* Начальное смещение текста */
-    }
-    to {
-      opacity: 1; /* Текст полностью видим в конце анимации */
-      transform: translateY(0); /* Конечное смещение текста  */
-    }
-  }
-
-  .text-animation {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: textFadeIn 0.6s ease forwards;
-}
-
-
-/* Стили для кнопок управления слайдером */
 .slider_controls {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
+    position: absolute;
+    bottom: 20px;
+    right: 60px;
 }
 
+/* Основные стили для кнопки */
 .slider_button {
-    width: 30px;
-    height: 30px;
-    background-color: transparent;
-    border: 5px solid #fff;
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border: 5px solid #000000; /* Уменьшим ширину обводки обратно на 5px */
     border-radius: 50%;
     cursor: pointer;
-    margin: 0 5px;
-    background-color:white;
     transition: background-color 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
-    outline: none; /* Убираем рамку при фокусировке */
+    outline: none;
     position: relative;
-}
-.slider_button::before {
-    /* Создаем псевдоэлемент, который увеличит область нажатия */
-    content: "";
-    position: absolute;
-    top: -20px;
-    left: -5px;
-    right: -5px;
-    bottom: -20px;
-    border: 5px solid transparent;
-    border-radius: 50%;
+    display: inline-block;
+    z-index: 2;
 }
 
-/* Стили для активной кнопки */
-.slider_button.active {
-    background-color: #000000; /* Цвет фона для активной кнопки */
-}
-
-/* Интерактивность для кнопок */
+/* Переопределение стилей при наведении */
 .slider_button:hover {
+    background-color: #000000;
+    border-color: #fff;
+    transform: scale(1.1); /* Увеличение размера при наведении */
+    transition: background-color 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+}
+
+.slider_button:active {
+    transform: scale(0.90);
+}
+
+/* Переопределение стилей при выборе радио-кнопки */
+.slider_button.slider-input:checked {
     background-color: #000000;
     border-color: #fff;
 }
 
-.slider_button:active {
-    transform: scale(0.90); /* Масштабирование кнопки при нажатии */
-}
 .title_slider {
     font-size: 40px;
     float: left;
@@ -155,43 +97,24 @@
     color: #fff;
     font-family: 'Mooli', sans-serif;
 }
-@media (min-width: 769px),(max-width: 960px) {
-    .container_slider{
-        width: 930px;
-        height: 920px;
-    }
-    .main_slider {
-        max-width: 800px;
-        height: 928px;
-    }
-    .slider_controls {
-        float: right;
-    }
-}
-@media (max-width: 768px) {
-    /* Ваши стили для мобильных устройств */
-    .container_slider {
-        width: 768px;
-        height: 980px;
-    }
-    .main_slider {
-        display: flex;
-        flex-direction: column;
-        max-width: 100%;
-        height: auto;
-    }
-    .img {
-        max-width: 100%;
-        max-height: 100%;
-    }
-    .title_slider {
-        text-align: left;
 
-    }
-    .caption {
-        display: none; /* Скрыть подписи на мобильных устройствах */
-    }
+input[name="slider-radio"] {
+    position: absolute;
+    visibility: hidden;
 }
 
+#slide-1:checked ~ .s1 {
+    margin-left: 0;
+}
 
+#slide-2:checked ~ .s1 {
+    margin-left: -25%;
+}
 
+#slide-3:checked ~ .s1 {
+    margin-left: -50%;
+}
+
+#slide-4:checked ~ .s1 {
+    margin-left: -75%;
+}

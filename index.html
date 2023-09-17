@@ -7,39 +7,39 @@
     <link rel="stylesheet" href="/cssMemeSlider/style.css">
 </head>
 <body>
-<div class="container_slider">
-    <div class="main_slider">
+<div class="slider middle">
+    <div class="container_slider middle">
         <div class="img_slider">
-            <div class="img active">
+            <input type="radio" id="slide-1" name="slider-radio" class="slider-input" checked>
+            <input type="radio" id="slide-2" name="slider-radio" class="slider-input">
+            <input type="radio" id="slide-3" name="slider-radio" class="slider-input">
+            <input type="radio" id="slide-4" name="slider-radio" class="slider-input">
+
+            <div class="img s1">
                 <img src="/cssMemeSlider/cat.jpg" alt="cat">
-                <div class="caption">Koshochka</div>
+                <div class="description">Funny Cat</div>
             </div>
             <div class="img">
                 <img src="/cssMemeSlider/drake.png" alt="drake">
-                <div class="caption">Keyboard mem</div>
+                <div class="description">Drake Meme</div>
             </div>
             <div class="img">
                 <img src="/cssMemeSlider/rambo.png" alt="rambo">
-                <div class="caption">Rambo</div>
+                <div class="description">Rambo Meme</div>
             </div>
             <div class="img">
                 <img src="/cssMemeSlider/designer.jpg" alt="designer">
-                <div class="caption">Designer life</div>
+                <div class="description">Designer Problems</div>
             </div>
         </div>
+    </div>
 
-        <div class="slider_controls">
-            <button class="slider_button" data-index="0"></button>
-            <button class="slider_button" data-index="1"></button>
-            <button class="slider_button" data-index="2"></button>
-            <button class="slider_button" data-index="3"></button>
-        </div>
-                <div class="title_slider">
-            <span></span>
-        </div>
+    <div class="slider_controls">
+        <label for="slide-1" class="slider_button"></label>
+        <label for="slide-2" class="slider_button"></label>
+        <label for="slide-3" class="slider_button"></label>
+        <label for="slide-4" class="slider_button"></label>
     </div>
 </div>
-
-    <script src="/cssMemeSlider/index.js"></script>
 </body>
 </html>
