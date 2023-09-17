@@ -1,11 +1,23 @@
+@font-face {
+    font-family: 'Mooli';
+    src: url(/cssMemeSlider/Mooli-Regular.ttf)
+}
+
 /* Стили для контейнера слайдера */
 .container_slider {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 100%;
+    width: 930px;
+    height: 920px;
     text-align: center;
     transform: translate(-50%, -50%);
+    background-color: #570f0f;
+}
+.main_slider{
+    margin: 0 auto;
+    max-width: 800px;
+    height: 920px
 }
 
 /* Стили для слайдера изображений */
@@ -19,12 +31,14 @@
     display: none;
     position: relative;
     margin: 0 auto;
+    margin-top: 30px;
     max-width: 800px;
     max-height: 800px;
     animation: slide-in 0.5s ease-in-out;
 }
 .active{
     display: block;
+
 }
 
 
@@ -72,24 +86,69 @@
         transform: translateX(0);
     }
 }
+/* Анимация при смене текста */
+@keyframes textFadeIn {
+    from {
+      opacity: 0; /* Текст полностью прозрачен в начале анимации */
+      transform: translateY(-20px); /* Начальное смещение текста */
+    }
+    to {
+      opacity: 1; /* Текст полностью видим в конце анимации */
+      transform: translateY(0); /* Конечное смещение текста  */
+    }
+  }
+
+  .text-animation {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: textFadeIn 0.6s ease forwards;
+}
+
 
 /* Стили для кнопок управления слайдером */
 .slider_controls {
+
     display: flex;
     justify-content: center;
-    margin-top: 10px;
+    margin-top: 20px;
+    float: right;
 }
 
 .slider_button {
-    padding: 10px 20px;
-    background-color: #333;
-    color: #fff;
-    border: none;
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    border: 5px solid #fff;
+    border-radius: 50%;
     cursor: pointer;
     margin: 0 5px;
+    background-color:white;
+    transition: background-color 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+    outline: none; /* Убираем рамку при фокусировке */
 }
 
 /* Стили для активной кнопки */
 .slider_button.active {
-    background-color: #555;
+    background-color: #000000; /* Цвет фона для активной кнопки */
 }
+
+/* Интерактивность для кнопок */
+.slider_button:hover {
+    background-color: #000000;
+    border-color: #fff;
+}
+
+.slider_button:active {
+    transform: scale(0.95); /* Масштабирование кнопки при нажатии */
+}
+.title_slider {
+    font-size: 40px;
+    float: left;
+    margin-top: 10px;
+    padding-left: 10px;
+    color: #fff;
+    font-family: 'Mooli', sans-serif;
+}
+
+
+
